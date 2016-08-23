@@ -1,0 +1,106 @@
+h1 {
+  font-family: 'Baloo Paaji', cursive;
+  text-align: center;
+  font-size: 42px;
+  padding: 5px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#maincontainer {
+  background-color: azure;
+  background-color: rgba(0,0,0,0.4);
+  background-image: url("https://cdn2.vox-cdn.com/uploads/chorus_image/image/47552879/Pike_Place_Market_Entrance.0.0.jpg");
+  background-attachment: fixed;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  position: static;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.centerblock {
+  width: 50%;
+  margin: auto;
+  padding: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(173, 216, 230);
+  border-radius: 10px;
+}
+
+.listholder {
+  background-color: white;
+  border-radius: 10px;
+  width: 95%;
+  height: 80%;
+  margin: auto;
+  font-family: Arial;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+h2 {
+  font-family: Times;
+  text-align: center;
+  padding: 5px;
+}
+
+#salmonlogo {
+  width: 60%;
+  padding: auto;
+  margin: auto;
+  background-color: rgb(173, 216, 230);
+  background-color: rgba(173, 216, 230, 0.9);
+  border-radius: 10px;
+}
+
+img {
+  display: block;
+  width: 80%;
+  margin: 5px auto;
+  padding: auto;
+}
+
+hr {
+  width: 80%;
+  margin-top: -20px;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+.holdblock {
+  background-color: teal;
+  border-radius: 10px;
+  width: 60%;
+  margin: 10px auto;
+}
+
+#quoteheader {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  padding: 5px;
+}
+
+html {
+  height: 100%;
+}
