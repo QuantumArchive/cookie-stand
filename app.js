@@ -17,6 +17,7 @@ var pike = {
     return Number(generatedCookies.toFixed(0));
   },
   cookiesPerDay: function() {
+    this.totalCookies = 0;
     for (var i = 0; i < this.timeArray.length; i++) {
       var currentCookie = this.cookiesPerHour();
       if (i === (this.timeArray.length - 1)) {
@@ -67,6 +68,7 @@ var seatac = {
     return Number(generatedCookies.toFixed(0));
   },
   cookiesPerDay: function() {
+    this.totalCookies = 0;
     for (var i = 0; i < this.timeArray.length; i++) {
       var currentCookie = this.cookiesPerHour();
       if (i === (this.timeArray.length - 1)) {
@@ -117,6 +119,7 @@ var seacenter = {
     return Number(generatedCookies.toFixed(0));
   },
   cookiesPerDay: function() {
+    this.totalCookies = 0;
     for (var i = 0; i < this.timeArray.length; i++) {
       var currentCookie = this.cookiesPerHour();
       if (i === (this.timeArray.length - 1)) {
@@ -167,6 +170,7 @@ var caphill = {
     return Number(generatedCookies.toFixed(0));
   },
   cookiesPerDay: function() {
+    this.totalCookies = 0;
     for (var i = 0; i < this.timeArray.length; i++) {
       var currentCookie = this.cookiesPerHour();
       if (i === (this.timeArray.length - 1)) {
@@ -217,6 +221,7 @@ var alki = {
     return Number(generatedCookies.toFixed(0));
   },
   cookiesPerDay: function() {
+    this.totalCookies = 0;
     for (var i = 0; i < this.timeArray.length; i++) {
       var currentCookie = this.cookiesPerHour();
       if (i === (this.timeArray.length - 1)) {
