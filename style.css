@@ -1,0 +1,165 @@
+h1 {
+  font-family: 'Baloo Paaji', cursive;
+  text-align: center;
+  font-size: 42px;
+  padding: 0;
+  margin: 0;
+  color: rgb(25,25,112);
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#maincontainer {
+  background-color: rgb(230, 230, 250);
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6a/Pike_Place_Market_Seattle.jpg");
+  background-attachment: fixed;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+  position: static;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  z-index: -10;
+}
+
+.centerblock {
+  width: 50%;
+  margin: 10px auto;
+  padding: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(173, 216, 230);
+  background-color: rgba(173, 216, 230, 0.95);
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+.listholder {
+  background-color: white;
+  border-radius: 10px;
+  width: 95%;
+  height: 80%;
+  margin: auto;
+  font-family: Arial;
+}
+
+ul {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+h2 {
+  font-family: Times;
+  text-align: center;
+  padding: 5px;
+  color: rgb(46,139,87);
+  font-weight: bold;
+}
+
+#salmonlogo {
+  width: 60%;
+  padding: auto;
+  margin: 10px auto;
+  background-color: rgb(173, 216, 230);
+  background-color: rgba(173, 216, 230, 0.95);
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+img {
+  display: block;
+  width: 80%;
+  margin: 5px auto;
+  padding: auto;
+}
+
+hr {
+  width: 80%;
+  margin-top: -20px;
+  height: 2px;
+  background-color: black;
+  border: none;
+}
+
+.holdblock {
+  background-color: teal;
+  border-radius: 10px;
+  width: 60%;
+  margin: 10px auto;
+}
+
+#quoteheader {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 5px;
+  color: rgb(250,128,114);
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+html {
+  height: 100%;
+}
+
+a {
+  font-family: Arial;
+  font-size: 20px;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+nav {
+  list-style-type: none;
+  padding: 10px;
+}
+
+nav li {
+  display:inline-block;
+  margin: auto 5px;
+}
+
+.blocktext {
+  width: 80%;
+  background-color: rgb(255,255,255);
+  background-color: rgba(255,255,255,0.7);
+  margin: auto;
+  border-radius: 10px;
+  padding: 5px;
+  border: black 1px solid;
+}
+
+.description {
+  font-family: Arial;
+  font-size: 20px;
+  text-align: justify;
+  padding: 8px 8px 8px 8px;
+  text-indent: 2em;
+}
+
+#navbar {
+  width: 60%;
+}
+
+#filldivbar {
+  background-image: url("http://www.printawallpaper.com/upload/designs/old-compass-on-world-map.jpg");
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
