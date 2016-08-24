@@ -55,10 +55,10 @@ function populateTable(nodeArray, objectArray) {
   };
 };
 
-function calcFinal(node, nodeArray) {
+function calcFinal(node, objectListArray, totalFlag) {
   var tr          = document.createElement('tr');
   var theader     = document.createElement('th');
-  var loopCounter = (generateTimeArray().length);
+  var loopCounter = (generateTimeArray().length - 1 + totalFlag);
   theader.textContent = 'Totals';
   tr.appendChild(theader);
   theader.setAttribute('class', 'finalrow');
@@ -66,13 +66,63 @@ function calcFinal(node, nodeArray) {
     var colTotal = 0;
     var td = document.createElement('td');
     td.setAttribute('class', 'finalrow');
-    for (var k = 0; k < nodeArray.length; k++) {
-      colTotal += nodeArray[k].cookieHourArray[i];
+    for (var k = 0; k < objectListArray.length; k++) {
+      colTotal += objectListArray[k][i];
     }
     td.textContent = colTotal;
     tr.appendChild(td);
   }
   node.appendChild(tr);
+  return tr;
+};
+
+function clearRow(nodeArray) {
+  for (var i = 0; i < nodeArray.length; i++) {
+    nodeArray[i].textContent = '';
+  }
+};
+
+function checkNumber(value) {
+  var elMsg = document.getElementById('feedback');
+  if (isNaN(value)) {
+    elMsg.innerHTML = 'Please validate the numbers that were inputed. Make sure you use just Arabic numerals.';
+    throw new Error('One input was not a number.');
+  };
+};
+
+function validateMinMax(min, max){
+  var elMsg = document.getElementById('feedback');
+  if (min > max) {
+    elMsg.innerHTML = 'Your min value is greater then your max value. Please input different values.';
+    throw new Error('Min value was greater than max value.');
+  };
+}
+
+function addRow(event) {
+  event.preventDefault();
+  var elMsg       = document.getElementById('feedback');
+  var location    = event.target.location.value;
+  var minCust     = Number(event.target.min_cust.value);
+  var maxCust     = Number(event.target.max_cust.value);
+  var avgCookies  = Number(event.target.avg_cookies.value);
+  var newStore    = new Store(location, minCust, maxCust, avgCookies);
+  var numArray    = [minCust, maxCust, avgCookies];
+
+  elMsg.innerHTML = '';
+
+  for(var i = 0; i < numArray.length; i++) {
+    checkNumber(numArray[i]);
+  };
+  validateMinMax(minCust, maxCust);
+
+  clearRow([tableOneFinalRow]);
+  populateTable(nodeArray, [newStore]);
+  tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
+
+  event.target.location.value = null;
+  event.target.min_cust.value = null;
+  event.target.max_cust.value = null;
+  event.target.avg_cookies.value = null;
 };
 
 var Store = function(location, minCust, maxCust, avgCookies) {
@@ -84,10 +134,12 @@ var Store = function(location, minCust, maxCust, avgCookies) {
   this.cookieHourArray = [];
   this.tosserHour = [];
   this.timeArray = generateTimeArray();
+  storeObjectArray.push(this);
 };
 
 Store.prototype.generateRandom = function() {
-  return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+  var randomNumb = Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+  return randomNumb;
 };
 
 Store.prototype.cookiesPerHour = function() {
@@ -113,6 +165,7 @@ Store.prototype.cookiesPerDay = function() {
       this.tosserHour[i] = numToss;
     }
   }
+  listObjectArray.push(this.cookieHourArray);
 };
 
 Store.prototype.render = function() {
@@ -121,15 +174,19 @@ Store.prototype.render = function() {
   var headerLocOne = document.createElement('th');
   var trTwo        = document.createElement('tr');
   var headerLocTwo = document.createElement('th');
+
   headerLocOne.textContent = this.location;
   headerLocTwo.textContent = this.location;
+
   trOne.appendChild(headerLocOne);
   trTwo.appendChild(headerLocTwo);
+
   for (var i = 0; i < this.timeArray.length; i++) {
     var tdOne = document.createElement('td');
     tdOne.textContent = this.cookieHourArray[i];
     trOne.appendChild(tdOne);
   };
+
   for (var j = 0; j < this.tosserHour.length; j++) {
     var tdTwo = document.createElement('td');
     tdTwo.textContent = this.tosserHour[j];
@@ -139,15 +196,23 @@ Store.prototype.render = function() {
 };
 
 //main
-var pike = new Store('1st and Pike', 23, 65, 6.3);
-var seaTac = new Store('SeaTac Airport', 3, 24, 1.2);
-var seaCenter = new Store('Seattle Center', 11, 38, 3.7);
-var capHill = new Store('Capitol Hill', 20, 38, 2.3);
-var alki = new Store('Alki', 2, 16, 4.6);
-var locArray = [pike, seaTac, seaCenter, capHill, alki];
+var storeObjectArray = [];
+var listObjectArray = [];
+new Store('1st and Pike', 23, 65, 6.3);
+new Store('SeaTac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 3.7);
+new Store('Capitol Hill', 20, 38, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
 var tableBodyNodeOne = createTable('store_info', 1);
 var tableBodyNodeTwo = createTable('tosser_info', 0);
 var nodeArray = [tableBodyNodeOne, tableBodyNodeTwo];
-populateTable(nodeArray, locArray);
-calcFinal(tableBodyNodeOne, locArray);
+populateTable(nodeArray, storeObjectArray);
+var tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
+
+//In case you wanted to append totals row to the bottom of the table uncomment bottom two
+//var listObjectArrayTosser = [pike.tosserHour, seaTac.tosserHour, seaCenter.tosserHour, capHill.tosserHour, alki.tosserHour];
+//calcFinal(tableBodyNodeTwo, listObjectArrayTosser, 0);
+
+var tableForm = document.getElementById('new_store');
+tableForm.addEventListener('submit', addRow, false);

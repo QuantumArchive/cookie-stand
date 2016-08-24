@@ -191,3 +191,59 @@ tr:nth-child(even) {
 .finalrow {
   background-color: rgb(72, 209, 204);
 }
+
+.form_label {
+  float: left;
+  width: 260px;
+  text-align: right;
+  padding-right: 10px;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+.form_holder {
+  width: 70%;
+  margin: auto;
+  padding: 10px;
+  background-color: rgb(167, 167, 240);
+  border-radius: 10px;
+}
+
+.form_input {
+  margin: 5px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+
+.submit {
+  text-align: center;
+  border-radius: 10px;
+}
+
+button {
+  padding: 5px 15px;
+  background: #ccc;
+  width: 100px;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 18px;
+}
+
+input[type=text] {
+  width: 30%;
+  border-radius: 5px;
+  padding: 1px 1px;
+  box-sizing: border-box;
+  font-family: Arial;
+  font-size: 20px;
+}
+
+#feedback {
+  text-align: center;
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
