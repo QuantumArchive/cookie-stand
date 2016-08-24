@@ -55,10 +55,10 @@ function populateTable(nodeArray, objectArray) {
   };
 };
 
-function calcFinal(node, nodeArray) {
+function calcFinal(node, objectListArray, totalFlag) {
   var tr          = document.createElement('tr');
   var theader     = document.createElement('th');
-  var loopCounter = (generateTimeArray().length);
+  var loopCounter = (generateTimeArray().length - 1 + totalFlag);
   theader.textContent = 'Totals';
   tr.appendChild(theader);
   theader.setAttribute('class', 'finalrow');
@@ -66,8 +66,8 @@ function calcFinal(node, nodeArray) {
     var colTotal = 0;
     var td = document.createElement('td');
     td.setAttribute('class', 'finalrow');
-    for (var k = 0; k < nodeArray.length; k++) {
-      colTotal += nodeArray[k].cookieHourArray[i];
+    for (var k = 0; k < objectListArray.length; k++) {
+      colTotal += objectListArray[k][i];
     }
     td.textContent = colTotal;
     tr.appendChild(td);
@@ -150,4 +150,10 @@ var tableBodyNodeOne = createTable('store_info', 1);
 var tableBodyNodeTwo = createTable('tosser_info', 0);
 var nodeArray = [tableBodyNodeOne, tableBodyNodeTwo];
 populateTable(nodeArray, locArray);
-calcFinal(tableBodyNodeOne, locArray);
+
+var listObjectArray = [pike.cookieHourArray, seaTac.cookieHourArray, seaCenter.cookieHourArray, capHill.cookieHourArray, alki.cookieHourArray];
+calcFinal(tableBodyNodeOne, listObjectArray, 1);
+
+//In case you wanted to append totals row to the bottom of the table uncomment bottom two
+//var listObjectArrayTosser = [pike.tosserHour, seaTac.tosserHour, seaCenter.tosserHour, capHill.tosserHour, alki.tosserHour];
+//calcFinal(tableBodyNodeTwo, listObjectArrayTosser, 0);
