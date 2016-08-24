@@ -29,10 +29,12 @@ function createTable(htmlTag, totalFlag) {
   var headersLength = headers.length - 1 + totalFlag;
 
   tableRow.appendChild(tableHead);
+  tableHead.setAttribute('class', 'tableheader');
 
   for (var i = 0; i < headersLength; i++) {
     var th = document.createElement('th');
     th.textContent = headers[i];
+    th.setAttribute('class', 'tableheader');
     tableRow.appendChild(th);
   }
 
@@ -44,11 +46,12 @@ function createTable(htmlTag, totalFlag) {
   return tableBody;
 };
 
-function populateTable(nodeOne, nodeTwo, nodeArray) {
-  for (var i = 0; i < nodeArray.length; i++) {
-    var render = nodeArray[i].render();
-    nodeOne.appendChild(render[0]);
-    nodeTwo.appendChild(render[1]);
+function populateTable(nodeArray, objectArray) {
+  for (var i = 0; i < objectArray.length; i++) {
+    var render = objectArray[i].render();
+    for (var k = 0; k < nodeArray.length; k++) {
+      nodeArray[k].appendChild(render[k]);
+    };
   };
 };
 
@@ -58,9 +61,11 @@ function calcFinal(node, nodeArray) {
   var loopCounter = (generateTimeArray().length);
   theader.textContent = 'Totals';
   tr.appendChild(theader);
+  theader.setAttribute('class', 'finalrow');
   for (var i = 0; i < loopCounter; i++) {
     var colTotal = 0;
     var td = document.createElement('td');
+    td.setAttribute('class', 'finalrow');
     for (var k = 0; k < nodeArray.length; k++) {
       colTotal += nodeArray[k].cookieHourArray[i];
     }
@@ -143,5 +148,6 @@ var locArray = [pike, seaTac, seaCenter, capHill, alki];
 
 var tableBodyNodeOne = createTable('store_info', 1);
 var tableBodyNodeTwo = createTable('tosser_info', 0);
-populateTable(tableBodyNodeOne, tableBodyNodeTwo, locArray);
+var nodeArray = [tableBodyNodeOne, tableBodyNodeTwo];
+populateTable(nodeArray, locArray);
 calcFinal(tableBodyNodeOne, locArray);
