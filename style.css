@@ -1,11 +1,5 @@
-h1 {
-  font-family: 'Baloo Paaji', cursive;
-  text-align: center;
-  font-size: 42px;
-  padding: 0;
-  margin: 0;
-  color: rgb(25,25,112);
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+html {
+  height: 100%;
 }
 
 body {
@@ -27,7 +21,6 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
-  z-index: -10;
 }
 
 .centerblock {
@@ -40,6 +33,58 @@ body {
   background-color: rgba(173, 216, 230, 0.95);
   border-radius: 10px;
   border: 1px solid white;
+}
+
+h1 {
+  font-family: 'Baloo Paaji', cursive;
+  text-align: center;
+  font-size: 42px;
+  padding: 0;
+  margin: 0;
+  color: rgb(25,25,112);
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+h2 {
+  font-family: Times;
+  text-align: center;
+  padding: 5px;
+  color: rgb(46,139,87);
+  font-weight: bold;
+}
+
+.blocktext {
+  width: 80%;
+  background-color: rgb(255,255,255);
+  background-color: rgba(255,255,255,0.7);
+  margin: auto;
+  border-radius: 10px;
+  padding: 5px;
+  border: black 1px solid;
+}
+
+.paragraphtext {
+  font-family: Arial;
+  font-size: 20px;
+  text-align: justify;
+  padding: 8px 8px 8px 8px;
+  text-indent: 2em;
+}
+
+#filldivbar {
+  background-image: url("http://www.printawallpaper.com/upload/designs/old-compass-on-world-map.jpg");
+  width: 100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#quoteheader {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 5px;
+  color: rgb(250,128,114);
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .listholder {
@@ -61,24 +106,6 @@ ul {
 ul li {
   margin: 5px 0;
   font-size: 18px;
-}
-
-h2 {
-  font-family: Times;
-  text-align: center;
-  padding: 5px;
-  color: rgb(46,139,87);
-  font-weight: bold;
-}
-
-#salmonlogo {
-  width: 60%;
-  padding: auto;
-  margin: 10px auto;
-  background-color: rgb(173, 216, 230);
-  background-color: rgba(173, 216, 230, 0.95);
-  border-radius: 10px;
-  border: 1px solid white;
 }
 
 img {
@@ -104,19 +131,6 @@ hr {
   overflow: scroll;
 }
 
-#quoteheader {
-  font-family: 'Lobster', cursive;
-  text-align: center;
-  padding: 5px;
-  margin-bottom: 5px;
-  color: rgb(250,128,114);
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-}
-
-html {
-  height: 100%;
-}
-
 a {
   font-family: Arial;
   font-size: 20px;
@@ -136,33 +150,8 @@ nav li {
   margin: auto 5px;
 }
 
-.blocktext {
-  width: 80%;
-  background-color: rgb(255,255,255);
-  background-color: rgba(255,255,255,0.7);
-  margin: auto;
-  border-radius: 10px;
-  padding: 5px;
-  border: black 1px solid;
-}
-
-.description {
-  font-family: Arial;
-  font-size: 20px;
-  text-align: justify;
-  padding: 8px 8px 8px 8px;
-  text-indent: 2em;
-}
-
 #navbar {
   width: 60%;
-}
-
-#filldivbar {
-  background-image: url("http://www.printawallpaper.com/upload/designs/old-compass-on-world-map.jpg");
-  width: 100%;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
 }
 
 table {
@@ -173,15 +162,12 @@ table {
   border-spacing: 0;
 }
 
-th {
+th, td {
   height: 30px;
-  border: 1px solid black;
-  font-family: Arial;
-}
-
-td {
-  height: 30px;
-  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: none;
+  border-right: none;
   text-align: center;
   font-family: Arial;
 }
@@ -191,9 +177,17 @@ td {
 }
 
 tr:nth-child(odd) {
-  background-color:white;
+  background-color: rgb(255, 255, 255);
 }
 
 tr:nth-child(even) {
-  background-color:LightGray;
+  background-color: rgb(211, 211, 211);
+}
+
+.tableheader {
+  background-color: rgb(224, 255, 255);
+}
+
+.finalrow {
+  background-color: rgb(72, 209, 204);
 }
