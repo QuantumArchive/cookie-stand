@@ -31,7 +31,7 @@ body {
 }
 
 .centerblock {
-  width: 50%;
+  width: 60%;
   margin: 10px auto;
   padding: auto;
   padding-top: 10px;
@@ -99,8 +99,9 @@ hr {
 .holdblock {
   background-color: teal;
   border-radius: 10px;
-  width: 60%;
+  width: 90%;
   margin: 10px auto;
+  overflow: scroll;
 }
 
 #quoteheader {
@@ -162,4 +163,37 @@ nav li {
   width: 100%;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+}
+
+table {
+  table-layout: fixed;
+  width: 1200px;
+  border: 1px solid black;
+  background-color: rgb(95, 158, 160);
+  border-spacing: 0;
+}
+
+th {
+  height: 30px;
+  border: 1px solid black;
+  font-family: Arial;
+}
+
+td {
+  height: 30px;
+  border: 1px solid black;
+  text-align: center;
+  font-family: Arial;
+}
+
+.tableblock {
+  border-radius: 0;
+}
+
+tr:nth-child(odd) {
+  background-color:white;
+}
+
+tr:nth-child(even) {
+  background-color:LightGray;
 }
