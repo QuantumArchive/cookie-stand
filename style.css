@@ -192,27 +192,34 @@ tr:nth-child(even) {
   background-color: rgb(72, 209, 204);
 }
 
-.form_label {
-  float: left;
-  width: 260px;
-  text-align: right;
-  padding-right: 10px;
-  font-family: Arial;
-  font-size: 20px;
-}
-
 .form_holder {
-  width: 70%;
+  width: 60%;
   margin: auto;
   padding: 10px;
   background-color: rgb(167, 167, 240);
   border-radius: 10px;
+  border: 1px solid rgb(100, 100, 240);
+}
+
+#new_store {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.form_label {
+  width: 260px;
+  padding-right: 10px;
+  font-family: Arial;
+  font-size: 20px;
+  margin: auto;
 }
 
 .form_input {
   margin: 5px;
   padding-bottom: 5px;
   overflow: hidden;
+  display: block;
 }
 
 .submit {
@@ -223,7 +230,7 @@ tr:nth-child(even) {
 button {
   padding: 5px 15px;
   background: #ccc;
-  width: 100px;
+  width: 160px;
   cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -232,7 +239,7 @@ button {
 }
 
 input[type=text] {
-  width: 30%;
+  width: 40%;
   border-radius: 5px;
   padding: 1px 1px;
   box-sizing: border-box;

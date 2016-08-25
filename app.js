@@ -78,7 +78,8 @@ function calcFinal(node, objectListArray, totalFlag) {
 
 function clearRow(nodeArray) {
   for (var i = 0; i < nodeArray.length; i++) {
-    nodeArray[i].textContent = '';
+    var elParentNode = nodeArray[i].parentNode;
+    elParentNode.removeChild(nodeArray[i]);
   }
 };
 
@@ -101,14 +102,14 @@ function validateMinMax(min, max){
 function addRow(event) {
   event.preventDefault();
   var elMsg       = document.getElementById('feedback');
+  elMsg.innerHTML = '';
+
   var location    = event.target.location.value;
   var minCust     = Number(event.target.min_cust.value);
   var maxCust     = Number(event.target.max_cust.value);
   var avgCookies  = Number(event.target.avg_cookies.value);
   var newStore    = new Store(location, minCust, maxCust, avgCookies);
   var numArray    = [minCust, maxCust, avgCookies];
-
-  elMsg.innerHTML = '';
 
   for(var i = 0; i < numArray.length; i++) {
     checkNumber(numArray[i]);
