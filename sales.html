@@ -17,12 +17,21 @@
       <h2 id="quoteheader">"A delightful treat from the Pacific Northwest!"</h2>
     </div>
     <div class="centerblock" id="navbar">
-      <h2>Site navigation</h2>
+      <div id="navtitleholder">
+        <div id="navimageleft">
+          <img src="assets/chinook-v2-reverse.png">
+        </div>
+        <h2 id="navtitle">Site Navigation</h2>
+        <div id="navimageright">
+          <img src="assets/chinook-v2.png">
+        </div>
+      </div>
       <hr>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="locations.html">Locations</a></li>
+          <li><a href="merchandise.html">Merchandise</a></li>
           <li><a href="hours.html">Store Hours</a></li>
           <li><a href="contactinfo.html">Contact Information</a></li>
         <ul>
@@ -46,28 +55,30 @@
       <div class="blocktext">
         <div class="form_holder">
           <form id="new_store">
-            <div class="form_input">
-              <label for="location" class="form_label">Location:</label><br />
-              <input type="text" name="location" required="required">
-            </div>
-            <div class="form_input">
-              <label for="min_cust" class="form_label">Min. # of Customers/Hour:</label><br />
-              <input type="text" name="min_cust" required="required">
-            </div>
-            <div class="form_input">
-              <label for="max_cust" class="form_label">Max. # of Customers/Hour:</label><br />
-              <input type="text" name="max_cust" required="required">
-            </div>
-            <div class="form_input">
-              <label for="avg_cookies" class="form_label">Avg. #Cookies/Customer:</label><br />
-              <input type="text" name="avg_cookies" required="required">
-            </div>
-            <div class="form_input">
-              <p id="feedback"></p>
-            </div>
-            <div class="submit">
-              <button type="Submit">Submit</button>
-            </div>
+            <fieldset>
+              <div class="form_input">
+                <label for="location" class="form_label">Location:</label><br />
+                <input type="text" name="location" required="required">
+              </div>
+              <div class="form_input">
+                <label for="min_cust" class="form_label">Min. # of Customers/Hour:</label><br />
+                <input type="text" name="min_cust" required="required">
+              </div>
+              <div class="form_input">
+                <label for="max_cust" class="form_label">Max. # of Customers/Hour:</label><br />
+                <input type="text" name="max_cust" required="required">
+              </div>
+              <div class="form_input">
+                <label for="avg_cookies" class="form_label">Avg. #Cookies/Customer:</label><br />
+                <input type="text" name="avg_cookies" required="required">
+              </div>
+              <div class="form_input">
+                <p id="feedback"></p>
+              </div>
+              <div class="submit">
+                <button type="Submit">Submit</button>
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>
