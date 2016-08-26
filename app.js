@@ -99,16 +99,56 @@ function validateMinMax(min, max){
   };
 }
 
-function addRow(event) {
+function checkLocation(location) {
+  var index = -1;
+  for (var i = 0; i < storeObjectArray.length; i++) {
+    if (location === storeObjectArray[i].location) {
+      index = i;
+      break;
+    }
+  }
+  return index;
+};
+
+function populateListObjectArray() {
+  for (var i = 0; i < storeObjectArray.length; i++) {
+    listObjectArray.push(storeObjectArray[i].cookieHourArray);
+  }
+};
+
+function updateListObjectArray(index) {
+  listObjectArray[index] = storeObjectArray[index].cookieHourArray;
+};
+
+function updateObjects(index, minCust, maxCust, avgCookies) {
+  storeObjectArray[index].minCust = minCust;
+  storeObjectArray[index].maxCust = maxCust;
+  storeObjectArray[index].avgCookies = avgCookies;
+};
+
+function updateTableRow(rowHeadName, replacementRows) {
+  var rowsToReplace = document.querySelectorAll('th');
+  var tempNodeArray = [];
+  for (var j = 0; j < rowsToReplace.length; j++) {
+    if (rowsToReplace[j].textContent === rowHeadName) {
+      tempNodeArray.push(rowsToReplace[j]);
+    }
+  };
+  for (var k = 0; k < replacementRows.length; k++) {
+    var parent = tempNodeArray[k].parentNode.parentNode;
+    parent.replaceChild(replacementRows[k], tempNodeArray[k].parentNode);
+  }
+};
+
+function updateTable(event) {
   event.preventDefault();
   var elMsg       = document.getElementById('feedback');
   elMsg.innerHTML = '';
 
-  var location    = event.target.location.value;
+  var location    = event.target.location.value.trim();
   var minCust     = Number(event.target.min_cust.value);
   var maxCust     = Number(event.target.max_cust.value);
   var avgCookies  = Number(event.target.avg_cookies.value);
-  var newStore    = new Store(location, minCust, maxCust, avgCookies);
   var numArray    = [minCust, maxCust, avgCookies];
 
   for(var i = 0; i < numArray.length; i++) {
@@ -117,8 +157,21 @@ function addRow(event) {
   validateMinMax(minCust, maxCust);
 
   clearRow([tableOneFinalRow]);
-  populateTable(nodeArray, [newStore]);
-  tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
+
+  var locIndex = checkLocation(location);
+
+  if(locIndex === -1) {
+    var newStore = new Store(location, minCust, maxCust, avgCookies);
+    updateListObjectArray((storeObjectArray.length - 1));
+    populateTable(nodeArray, [newStore]);
+    tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
+  } else {
+    updateObjects(locIndex, minCust, maxCust, avgCookies);
+    var tr = storeObjectArray[locIndex].render();
+    updateListObjectArray(locIndex);
+    updateTableRow(location, tr);
+    tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
+  };
 
   event.target.location.value = null;
   event.target.min_cust.value = null;
@@ -166,7 +219,6 @@ Store.prototype.cookiesPerDay = function() {
       this.tosserHour[i] = numToss;
     }
   }
-  listObjectArray.push(this.cookieHourArray);
 };
 
 Store.prototype.render = function() {
@@ -204,6 +256,7 @@ new Store('SeaTac Airport', 3, 24, 1.2);
 new Store('Seattle Center', 11, 38, 3.7);
 new Store('Capitol Hill', 20, 38, 2.3);
 new Store('Alki', 2, 16, 4.6);
+populateListObjectArray();
 
 var tableBodyNodeOne = createTable('store_info', 1);
 var tableBodyNodeTwo = createTable('tosser_info', 0);
@@ -211,9 +264,5 @@ var nodeArray = [tableBodyNodeOne, tableBodyNodeTwo];
 populateTable(nodeArray, storeObjectArray);
 var tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
 
-//In case you wanted to append totals row to the bottom of the table uncomment bottom two
-//var listObjectArrayTosser = [pike.tosserHour, seaTac.tosserHour, seaCenter.tosserHour, capHill.tosserHour, alki.tosserHour];
-//calcFinal(tableBodyNodeTwo, listObjectArrayTosser, 0);
-
 var tableForm = document.getElementById('new_store');
-tableForm.addEventListener('submit', addRow, false);
+tableForm.addEventListener('submit', updateTable, false);

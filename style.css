@@ -67,7 +67,9 @@ h2 {
   font-family: Arial;
   font-size: 20px;
   text-align: justify;
-  padding: 8px 8px 8px 8px;
+  margin: 5px;
+  border: 1px;
+  padding: 5px;
   text-indent: 2em;
 }
 
@@ -154,6 +156,83 @@ nav li {
   width: 60%;
 }
 
+#navtitleholder {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#navimageleft {
+  width: 130px;
+  display: inline-block;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+#navimageright {
+  width: 130px;
+  display: inline-block;
+  float: right;
+  padding: 0;
+  margin: 0;
+}
+
+#navtitle {
+  display:inline-block;
+  padding: 10px 0 10px 0;
+  margin: 0 0 10px 0;
+  width: calc(100% - 260px);
+}
+
+.blockleftimage {
+  padding: 5px;
+  float: left;
+}
+
+.blockcenterimage {
+  width: 60%;
+  margin: auto;
+}
+
+.merchhold {
+  width: auto;
+  height: 200px;
+  padding: 10px;
+  margin: 5px;
+  outline: 1px solid gray;
+}
+
+.merchimage {
+  height: auto;
+  width: 200px;
+  float: left;
+  border-radius: 10px;
+  margin: 0 15px 0 0;
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.merchtext {
+  font-family: Arial;
+  font-size: 20px;
+  text-align: justify;
+  margin: 5px;
+  border: 0;
+  padding: 0;
+}
+
+.genimage {
+  border-radius: 10px;
+  border: 1px solid darkgray;
+}
+
+figcaption {
+  text-align: center;
+  font-family: serif;
+  font-size: 18px;
+}
+
 table {
   table-layout: fixed;
   width: 1200px;
@@ -237,7 +316,7 @@ button {
   font-size: 18px;
 }
 
-input[type=text] {
+input[type=text], select {
   width: 40%;
   border-radius: 5px;
   padding: 1px 1px;
