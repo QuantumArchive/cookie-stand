@@ -8,7 +8,7 @@ var Catalog = {
   cookie24: 28,
   cookie36: 38,
   cutter: 19,
-  shirt: 25
+  shirt: 25,
 };
 
 var Order = function(name, address, city, state, zip, order) {
@@ -35,7 +35,7 @@ Order.prototype.render = function() {
     tdOne.textContent = this.infoArray[i];
     trOne.appendChild(tdOne);
   };
-  return trOne;
+  return [trOne];
 };
 
 function checkNumber(value) {
@@ -44,6 +44,10 @@ function checkNumber(value) {
     elMsg.innerHTML = 'Please validate the numbers that were inputed. Make sure you use just Arabic numerals.';
     throw new Error('One input was not a number.');
   };
+  if (value < 0) {
+    elMsg.innerHTML = 'One of your entries is negative, please double check your entries.';
+    throw new Error('One input was negative.');
+  }
 };
 
 function populateTable(nodeArray, objectArray) {
@@ -55,20 +59,15 @@ function populateTable(nodeArray, objectArray) {
   };
 };
 
-/*
-//Adapt this function for this problem
 function createTable(htmlTag, totalFlag) {
+  //create the headers for a table and return the table body node
   var mainData      = document.getElementById(htmlTag);
-  var salesTable    = document.createElement('table');
-  var salesHead     = document.createElement('thead');
+  var orderTable    = document.createElement('table');
+  var orderHead     = document.createElement('thead');
   var tableRow      = document.createElement('tr');
-  var tableHead     = document.createElement('th');
   var tableBody     = document.createElement('tbody');
-  var headers       = generateTimeArray();
+  var headers       = ['Name', 'Address', 'City', 'State', 'Zip Code', 'Order', 'Cost'];
   var headersLength = headers.length - 1 + totalFlag;
-
-  tableRow.appendChild(tableHead);
-  tableHead.setAttribute('class', 'tableheader');
 
   for (var i = 0; i < headersLength; i++) {
     var th = document.createElement('th');
@@ -77,13 +76,13 @@ function createTable(htmlTag, totalFlag) {
     tableRow.appendChild(th);
   }
 
-  salesHead.appendChild(tableRow);
-  salesTable.appendChild(salesHead);
-  salesTable.appendChild(tableBody);
+  orderHead.appendChild(tableRow);
+  orderTable.appendChild(salesHead);
+  orderTable.appendChild(tableBody);
   mainData.appendChild(salesTable);
 
   return tableBody;
-};*/
+};
 
 function updateOrderTable (event) {
   event.preventDefault();
@@ -99,9 +98,7 @@ function updateOrderTable (event) {
   var newOrder    = new Order(name, address, city, state, zipcode, order);
   checkNumber(zipcode);
   //Need to pass it an array with the table object we want to append to
-  populateTable([],[newOrder]);
-
-
+  populateTable([tableBodyNode],[newOrder]);
 
   event.target.name.value = null;
   event.target.address.value = null;
@@ -111,5 +108,8 @@ function updateOrderTable (event) {
 };
 
 //main
+
+var tableBodyNode = createTable('orders', 1);
+
 var tableForm = document.getElementById('order_form');
 tableForm.addEventListener('submit', updateOrderTable, false);
