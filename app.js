@@ -89,6 +89,10 @@ function checkNumber(value) {
     elMsg.innerHTML = 'Please validate the numbers that were inputed. Make sure you use just Arabic numerals.';
     throw new Error('One input was not a number.');
   };
+  if (value < 0) {
+    elMsg.innerHTML = 'One of your entries is negative, please double check your entries.';
+    throw new Error('One input was negative.');
+  }
 };
 
 function validateMinMax(min, max){
@@ -161,11 +165,13 @@ function updateTable(event) {
   var locIndex = checkLocation(location);
 
   if(locIndex === -1) {
+    //create new store
     var newStore = new Store(location, minCust, maxCust, avgCookies);
     updateListObjectArray((storeObjectArray.length - 1));
     populateTable(nodeArray, [newStore]);
     tableOneFinalRow = calcFinal(tableBodyNodeOne, listObjectArray, 1);
   } else {
+    //update table since entry already there
     updateObjects(locIndex, minCust, maxCust, avgCookies);
     var tr = storeObjectArray[locIndex].render();
     updateListObjectArray(locIndex);
