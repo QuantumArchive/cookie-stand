@@ -200,6 +200,8 @@ nav li {
   padding: 10px;
   margin: 5px;
   outline: 1px solid gray;
+  overflow: hidden;
+  min-width: 200px;
 }
 
 .merchimage {
@@ -286,6 +288,12 @@ tr:nth-child(even) {
   margin: auto;
 }
 
+#order_form {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
 .form_label {
   width: 260px;
   font-family: Arial;
@@ -331,4 +339,8 @@ input[type=text], select {
   font-size: 20px;
   font-weight: bold;
   color: red;
+}
+
+fieldset {
+  min-width: 80%;
 }
